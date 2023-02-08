@@ -1,0 +1,5 @@
+.error {
+  display: none;
+  color: #ff2108;
+  transform: translateY(-100%);
+}

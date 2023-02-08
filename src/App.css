@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,weight@0,200;0,400;1,300; 500; 600&display=swap");
+
+.App {
+  background-color: #fffcfb;
+  font-family: "IBM Plex Sans", sans-serif;
+  width: 100%;
+  height: 100vh;
+}
+.app-grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
