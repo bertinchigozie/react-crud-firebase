@@ -5,13 +5,15 @@ import { AiOutlineEye } from "react-icons/ai";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 function ManageStudents(props) {
+  const date = new Date();
+
   return (
     <div className="manage">
       <div className="container">
         <div className="form-header">
           <div>Manage Student</div>
           <div className="form-date-box">
-            <div>25th Jul 2022</div>
+            {/* <div>{date}</div> */}
             <div>16:10</div>
           </div>
         </div>
@@ -51,7 +53,7 @@ function ManageStudents(props) {
                     props.clicked(student.id);
                   }}
                 />{" "}
-                <BiEditAlt />{" "}
+                <BiEditAlt onClick={() => props.updated(student.id)} />{" "}
                 <RiDeleteBin5Line onClick={() => props.delete(student.id)} />
               </div>
             </div>

@@ -4,6 +4,7 @@ import {
   doc,
   getDoc,
   getDocs,
+  updateDoc,
 } from "firebase/firestore";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -19,6 +20,20 @@ function App() {
   const [students, setStudents] = useState([]);
   const [student, setStudent] = useState({});
   const [show, setShow] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [middleName, setMiddleName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [address, setAddress] = useState("");
+  const [secondAddress, setSecondAddress] = useState("");
+  const [classentered, setClassEntered] = useState(undefined);
+  const [rollNumber, setRollNumber] = useState("");
+  const [landmark, setLandmark] = useState("");
+  const [city, setCity] = useState("");
+  const [pincode, setPincode] = useState("");
+  const [division, setDivision] = useState(undefined);
+  const [error, setError] = useState(false);
+  const [errorText, setErrorText] = useState("");
+  const [showError, setShowError] = useState(false);
 
   const dataCollection = collection(db, "crud");
 
@@ -55,6 +70,15 @@ function App() {
     };
     deleteOneStudent();
   };
+  const updateHandler = (id) => {
+    const docCollection = doc(db, "crud", id);
+
+    // const updatedStudent = async () => {
+    //   const dataStud = await updateDoc(docCollection, { capital: true });
+    //   console.log(dataStud);
+    // };
+    // updatedStudent();
+  };
 
   return (
     <Router>
@@ -65,7 +89,7 @@ function App() {
           <Navigation />
           <div>
             <Switch>
-              <Route path="/add-student">
+              <Route exact path="/">
                 <Form />
               </Route>
               <Route path="/manage-student">
@@ -73,6 +97,7 @@ function App() {
                   students={students}
                   clicked={viewHandler}
                   delete={deleHandler}
+                  updated={updateHandler}
                 />
               </Route>
             </Switch>

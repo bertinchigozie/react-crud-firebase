@@ -2,20 +2,27 @@ import React from "react";
 import { BsPeople } from "react-icons/bs";
 import { RiListCheck2, RiLogoutBoxRLine } from "react-icons/ri";
 import "./Navigation.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Navigation() {
   return (
     <div>
       <nav className="nav">
-        <div className="nav-items active">
+        <div className="nav-items">
           <div>
             <BsPeople />
           </div>
           <div>
-            <Link to="/add-student" className="link">
+            <NavLink
+              exact
+              to="/"
+              className="link"
+              style={(isActive) => ({
+                backgroundColor: isActive ? "active" : null,
+              })}
+            >
               <p>Add Student</p>
-            </Link>
+            </NavLink>
           </div>
         </div>
         <div className="nav-items">
@@ -24,10 +31,16 @@ function Navigation() {
           </div>
 
           <div>
-            <Link to="/manage-student" className="link">
+            <NavLink
+              to="/manage-student"
+              className="link"
+              style={(isActive) => ({
+                backgroundColor: isActive ? "active" : null,
+              })}
+            >
               {" "}
               <p>Manage Students</p>
-            </Link>
+            </NavLink>
           </div>
         </div>
         <div className="nav-items">
@@ -35,7 +48,15 @@ function Navigation() {
             <RiLogoutBoxRLine />
           </div>
           <div>
-            <p>Logout</p>
+            <NavLink
+              to="/logout"
+              className="link"
+              style={(isActive) => ({
+                backgroundColor: isActive ? "active" : null,
+              })}
+            >
+              <p>Logout</p>
+            </NavLink>
           </div>
         </div>
       </nav>
